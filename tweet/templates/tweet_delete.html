@@ -1,0 +1,21 @@
+{% extends "layout.html" %} 
+
+{% block title %}Twibble! Let's talk - Home {% endblock %}
+
+{% block content %}
+<h1 class="text-center text-primary mt-4">Welcome to the Twibble! Let's talk  </h1>
+
+<h2>Are you sure that you want to delete the tweet?</h2>
+
+<form method="post">
+{% csrf_token %}
+
+<button type="submit" class="btn btn-danger">Delete</button>
+
+<a class="btn btn-success" href="{% url 'tweet_list' %}">Cancel</a>
+
+
+</form>
+
+
+{% endblock %}

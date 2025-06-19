@@ -1,0 +1,28 @@
+{% extends "layout.html" %} 
+
+{% block title %}Twibble! Let's talk - Home {% endblock %}
+
+{% block content %}
+<h1 class="text-center text-primary mt-4">Welcome to the Twibble! Let's talk  </h1>
+
+<h2>{% if form.instance.pk %}
+    Edit tweet
+    {% else %}
+    Create tweet
+    {% endif %}
+</h2>
+
+<form method="post" enctype="multipart/form-data" class="form">
+{% csrf_token %}
+{{ form.as_p}}
+{% if form.instance.pk %}
+<button type="submit" class="btn btn-warning">Update</button>
+{% else %}
+<button type="submit" class="btn btn-warning">Submit</button>
+{% endif %}
+
+<a class="btn btn-success" href="{% url 'tweet_list' %}">Back to list</a>
+
+</form>
+
+{% endblock %}
