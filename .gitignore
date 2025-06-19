@@ -1,0 +1,43 @@
+# Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Django specific
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# IDE files
+.vscode/
+.idea/
+
+# Environment files
+*.env
+
+# Distribution / Packaging
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
+
+# MacOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+
+# Virtual Environment
+.venv/
+env/
+venv/
+
+# Test and Coverage files
+.coverage
+nosetests.xml
+coverage.xml
+*.cover
+*.hypothesis/
