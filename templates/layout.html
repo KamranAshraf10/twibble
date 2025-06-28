@@ -24,7 +24,7 @@
   <body>
   <nav class="navbar navbar-expand-lg bg-primary navbar-custom mt-4" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Twibble</a>
+      <a class="navbar-brand" href="{% url 'tweet_list' %}">Twibble</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,26 +36,26 @@
           {% comment %} <li class="nav-item">
             <a class="nav-link" href="#">Explore</a>
           </li> {% endcomment %}
-          {% comment %} <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="#">Messages</a>
-          </li> {% endcomment %}
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Notifications</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-outline-light" type="submit">Search</button>
+        <form class="d-flex" role="search" method="get" action="{% url 'tweet_list' %}">
+          <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{ request.GET.q}}"/>
+          <button class="btn btn-sm btn-outline-light" type="submit">Search</button>
         </form>
-        {% comment %} <a href="{% url 'tweet_list' %}" class="btn btn-primary">Tweet Home</a> {% endcomment %}
+        
         {% if user.is_authenticated %}
         <form method="post" action="{% url 'logout' %}">
           {% csrf_token %}
           <button class="btn btn-danger ms-2" type="submit">Logout</button>
         </form>
         {% else %}
-          <a href="{% url 'register' %}" class="btn btn-warning ms-2">Register</a>
-          <a href="{% url 'login' %}" class="btn btn-success ms-2">Login</a>
+          <a href="{% url 'register' %}" class="btn btn-sm btn-warning ms-2">Register</a>
+          <a href="{% url 'login' %}" class="btn btn-sm btn-success ms-2">Login</a>
         {% endif %}
       </div>
     </div>

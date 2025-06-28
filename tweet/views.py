@@ -15,6 +15,14 @@ def tweet_list(request):
     print(tweets)   
     return render(request, 'tweet_list.html', {'tweets':tweets})
 
+# Search Functionality
+def tweet_list(request):
+    query = request.GET.get('q','')
+    tweets = Tweet.objects.all().order_by('-created_at')
+    if query:
+        tweets = tweets.filter(text__icontains=query)
+    return render(request, 'tweet_list.html', {'tweets':tweets, 'query':query})
+
 # Create/add Tweets
 @login_required
 def tweet_create(request):
@@ -61,11 +69,10 @@ def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password1'])
-            user.save()
+            user = form.save()
             login(request, user)
-            return redirect(tweet_list)
+            return redirect('tweet_list')
     else:
-        form = UserRegistrationForm
+        form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'form':form}) 
+
