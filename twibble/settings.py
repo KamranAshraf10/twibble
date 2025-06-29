@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-r81t86p=8$r-wapq)@$%$w*^=lx!6zt_28pq&q1hx5c^o@eaog
 DEBUG = False
 
 # ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['twibble.up.railway.app']
+ALLOWED_HOSTS = ['twibble.onrender.com']
 
 
 # Application definition

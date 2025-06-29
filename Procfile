@@ -1,1 +1,0 @@
-web: gunicorn twibble.wsgi --bind 0.0.0.0:8080
